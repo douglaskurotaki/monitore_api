@@ -25,3 +25,10 @@ Things you may want to cover:
 
 # Create Project Command
 `rails new monitore --api --skip-active-record --skip-bundle --skip-test --skip-system-test`
+
+# Create MongoDB Configurations
+`bin/rails g mongoid:config`
+
+
+# Configuration RuboCop VSCode
+`ruby.rubocop.executePath": "/Users/USER_NAME/.rvm/gems/ruby-2.6.5/wrappers/`
