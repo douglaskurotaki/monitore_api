@@ -22,6 +22,7 @@ end
 group :development do
   gem 'listen', '~> 3.3'
   gem 'rubocop', '~> 1.18', require: false
+  gem 'pry'
   gem 'spring'
 end
 
