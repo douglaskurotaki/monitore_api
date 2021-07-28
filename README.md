@@ -6,14 +6,19 @@ application up and running.
 Things you may want to cover:
 
 * Ruby version
+- 3.0.2
+
+* Rails version
+- 6.1.4
 
 * System dependencies
+- devise_token_auth
+- letter_opener, ~> 1.7
+- mongoid, ~> 7.0.5
+- redis, ~> 4.0
+- responders
 
 * Configuration
-
-* Database creation
-
-* Database initialization
 
 * How to run the test suite
 
