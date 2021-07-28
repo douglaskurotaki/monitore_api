@@ -32,3 +32,6 @@ Things you may want to cover:
 
 # Configuration RuboCop VSCode
 `ruby.rubocop.executePath": "/Users/USER_NAME/.rvm/gems/ruby-2.6.5/wrappers/`
+
+# Api Constraints
+In this application there is API versioning. That way, there is no problem making changes to the design. By default it will always match the latest version, just look at the code: `ApiConstraints.new(version: 2, default: true)` where the default is true.
