@@ -40,3 +40,7 @@ Things you may want to cover:
 
 # Api Constraints
 In this application there is API versioning. That way, there is no problem making changes to the design. By default it will always match the latest version, just look at the code: `ApiConstraints.new(version: 2, default: true)` where the default is true.
+
+# To install devise
+`rails g devise:install`
+- Add `config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }` to *config/enviroments/development.rb*
