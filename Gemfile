@@ -7,9 +7,10 @@ ruby '3.0.2'
 
 gem 'bcrypt', '~> 3.1.7'
 gem 'bootsnap', '>= 1.4.4', require: false
-gem 'devise_token_auth', '~> 1.2'
+gem 'devise_token_auth', git: 'https://github.com/lynndylanhurley/devise_token_auth'
 gem 'jbuilder', '~> 2.7'
 gem 'mongoid', '~> 7.0.5'
+gem 'mongoid-locker'
 gem 'omniauth-apple'
 gem 'omniauth-facebook'
 gem 'omniauth-github'
