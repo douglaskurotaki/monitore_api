@@ -132,9 +132,9 @@ GEM
     minitest (5.14.4)
     mongo (2.15.0)
       bson (>= 4.8.2, < 5.0.0)
-    mongoid (7.0.13)
+    mongoid (7.3.1)
       activemodel (>= 5.1, < 6.2)
-      mongo (>= 2.7.0, < 3.0.0)
+      mongo (>= 2.10.5, < 3.0.0)
     mongoid-locker (2.0.1)
       mongoid (>= 5.0, < 8)
     msgpack (1.4.2)
@@ -265,10 +265,10 @@ DEPENDENCIES
   bootsnap (>= 1.4.4)
   byebug
   devise_token_auth!
-  jbuilder (~> 2.7)
+  jbuilder
   letter_opener (~> 1.7)
   listen (~> 3.3)
-  mongoid (~> 7.0.5)
+  mongoid
   mongoid-locker
   omniauth-apple
   omniauth-facebook
