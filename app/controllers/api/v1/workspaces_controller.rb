@@ -52,7 +52,7 @@ module Api
 
       # Only allow a list of trusted parameters through.
       def workspace_params
-        params.require(:workspace).permit(:name, :description, :slug, :order, :favorite)
+        params.require(:workspace).permit(:name, :description, :slug, :order)
       end
     end
   end

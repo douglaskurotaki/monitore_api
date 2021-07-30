@@ -6,4 +6,7 @@ class Group
 
   field :name, type: String
   field :slug, type: String
+  field :favorite, type: Mongoid::Boolean, default: false
+
+  validates :name, presence: true
 end

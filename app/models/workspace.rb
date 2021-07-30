@@ -7,5 +7,7 @@ class Workspace
   field :description, type: String
   field :slug, type: String
   field :order, type: Integer
-  field :favorite, type: Mongoid::Boolean
+  index :slug
+
+  validates :name, presence: true
 end
