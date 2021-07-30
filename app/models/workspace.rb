@@ -9,7 +9,7 @@ class Workspace
   field :slug, type: String
   field :order, type: Integer
 
-  has_many :groups, inverse_of: :workspace, autosave: true
+  has_many :groups, inverse_of: :workspace, autosave: true, dependent: :destroy
 
   validates :name, presence: true
 end
