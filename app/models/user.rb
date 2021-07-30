@@ -5,6 +5,9 @@ class User
   include Mongoid::Timestamps
   include Mongoid::Locker
 
+  field :name, type: String
+  field :nickname, type: String
+
   field :locking_name, type: String
   field :locked_at, type: Time
 
