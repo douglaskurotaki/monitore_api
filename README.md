@@ -64,3 +64,32 @@ Inside of *devise_token_auth.rb*, we need to change some lines:
 `config.default_confirm_success_url = 'http://localhost:4200/login'`
 `config.default_password_reset_url = 'http://localhost:4200/reset-password'`
 `config.remove_tokens_after_password_reset = true`
+
+# Devise
+To setting params update data of user, we need config the strong params
+
+```ruby
+# application_controller.rb
+
+before_action :configure_permitted_parameters, if: :devise_controller?
+protected
+
+def configure_permitted_parameters
+  devise_parameter_sanitizer.permit(:account_update, keys: %i[name nickname]) # Here we can set the strong params
+end
+```
+
+## When Forgot the password
+In this case, the endpoint returns a url with necessary informations like access_token and client_id in this format:
+
+```
+http://localhost:4200/reset-password?
+access-token=a_lvO4CULxIpN6TtK0wL3A
+client=yJOgmJf0p5GSQb56oRgDAA
+client_id=yJOgmJf0p5GSQb56oRgDAA
+config=default
+expiry=1628719148
+reset_password=true
+token=a_lvO4CULxIpN6TtK0wL3A
+uid=email@email.com
+```
