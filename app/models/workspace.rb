@@ -10,6 +10,7 @@ class Workspace
   field :order, type: Integer
 
   has_many :groups, inverse_of: :workspace, autosave: true, dependent: :destroy
+  belongs_to :user
 
   validates :name, presence: true
 end

@@ -7,6 +7,7 @@ class Group
   field :name, type: String
   field :slug, type: String
   field :favorite, type: Mongoid::Boolean, default: false
+  field :order, type: Integer
 
   belongs_to  :workspace, -> { includes :author },
               counter_cache: true,

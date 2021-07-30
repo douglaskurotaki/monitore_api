@@ -52,7 +52,7 @@ module Api
 
       # Only allow a list of trusted parameters through.
       def group_params
-        params.require(:group).permit(:name, :slug, :favorite)
+        params.require(:group).permit(:name, :slug, :favorite, :order)
       end
     end
   end
