@@ -3,12 +3,13 @@
 module Api
   module V1
     class WorkspacesController < ApplicationController
+      before_action :authenticate_api_user!
       before_action :set_workspace, only: %i[show update destroy]
 
       # GET /workspaces
       # GET /workspaces.json
       def index
-        @workspaces = Workspace.all
+        @workspaces = current_api_user.workspaces.all
       end
 
       # GET /workspaces/1
@@ -18,7 +19,7 @@ module Api
       # POST /workspaces
       # POST /workspaces.json
       def create
-        @workspace = Workspace.new(workspace_params)
+        @workspace = current_api_user.workspaces.new(workspace_params)
 
         if @workspace.save
           render :show, status: :created, location: api_workspace_url(@workspace, format: :json)
@@ -47,7 +48,7 @@ module Api
 
       # Use callbacks to share common setup or constraints between actions.
       def set_workspace
-        @workspace = Workspace.find(params[:id])
+        @workspace = current_api_user.workspaces.find(params[:id])
       end
 
       # Only allow a list of trusted parameters through.
