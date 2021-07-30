@@ -67,5 +67,7 @@ class User
           :trackable,
           :validatable
 
+  has_many :workspaces, dependent: :destroy
+
   include DeviseTokenAuth::Concerns::User
 end
