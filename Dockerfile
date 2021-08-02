@@ -1,25 +1,30 @@
+
 FROM ruby:3.0.2
 RUN apt-get update -qq && apt-get install -y build-essential libpq-dev nodejs
-RUN mkdir /app
-WORKDIR /app
-ADD Gemfile /app/Gemfile
-ADD Gemfile.lock /app/Gemfile.lock
+
+# Install yarn
+RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - \
+  && echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list \
+  && apt-get update -qq \
+  && apt-get install -y yarn
+
+# Create a directory called `/workdir` and make that the working directory
+ENV APP_HOME /workdir
+RUN mkdir ${APP_HOME}
+WORKDIR ${APP_HOME}
+
+# Copy the Gemfile
+COPY Gemfile ${APP_HOME}/Gemfile
+COPY Gemfile.lock ${APP_HOME}/Gemfile.lock
+
 RUN bundle install
-ADD . /app
 
-# syntax=docker/dockerfile:1
-FROM ruby:3.0.2
-RUN apt-get update -qq && apt-get install -y build-essential libpq-dev nodejs
-WORKDIR /application
-COPY Gemfile /application/Gemfile
-COPY Gemfile.lock /application/Gemfile.lock
-RUN bundle install
+# Copy the project over
+COPY . ${APP_HOME}
 
-# Add a script to be executed every time the container starts.
-COPY entrypoint.sh /usr/bin/
-RUN chmod +x /usr/bin/entrypoint.sh
-ENTRYPOINT ["entrypoint.sh"]
-EXPOSE 3000
+# Map port 8080 to the outside world (your local computer)
+EXPOSE 8080
 
-# Configure the main process to run when running the image
-CMD ["rails", "server", "-b", "0.0.0.0"]
+ENTRYPOINT ["sh", "./entrypoint.sh"]
+
+# /usr/local/bin/aws --version
